@@ -29,5 +29,11 @@ pyosirix_example_project/  # The root directory
 └── VERSION                # It can be helpful for clarity to store a master version file.
 ```
 
+## Requirements
+A good way to generate the requirements file automatically is run [`pipreqs`](https://github.com/bndr/pipreqs) as follows from the root directory:
+```python
+pip install pipreqs
+pipreqs . --force
+```
 
 
