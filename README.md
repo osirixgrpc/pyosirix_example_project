@@ -3,6 +3,7 @@ An example project to demonstrate a method for creating a full project for use i
 
 It uses the following project structure:
 
+```text
 pyosirix_example_project/
 ├── package_1/
 │   ├── __init__.py
@@ -15,5 +16,7 @@ pyosirix_example_project/
 ├── .gitignore
 ├── LICENSE
 └── README.md
+```
+
 
 
