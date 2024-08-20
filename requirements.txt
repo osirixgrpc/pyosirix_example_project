@@ -1,5 +1,4 @@
 numpy
 Pillow
-scikit_image
+pytest
 setuptools
-skimage
