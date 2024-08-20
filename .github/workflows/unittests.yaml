@@ -12,23 +12,24 @@ jobs:
   run-tests:  # We can call this anything we like that makes sense.
     runs-on: macos-latest  # We will run on this on macOS as that is the final destination.
 
-  steps:
-    # Checkout the latest code
-    - name: Checkout
-      uses: actions/checkout@v4  # This s a pre-built "action" that someone else has kindly made. It is used frequently!
+    # Define each step for the "run-tests" job.
+    steps:
+      # Checkout the latest code
+      - name: Checkout
+        uses: actions/checkout@v4  # This s a pre-built "action" that someone else has kindly made. It is used frequently!
 
-    # Install python on the shiny new macOS server.
-    - name: Set up Python
-      uses: actions/setup-python@v5  # Another pre-built action.
-      with:
-        python-version: 3
+      # Install python on the shiny new macOS server.
+      - name: Set up Python
+        uses: actions/setup-python@v5  # Another pre-built action.
+        with:
+          python-version: 3
 
-    # Install all our dependencies.
-    - name: Install dependencies
-      run: |  # Using a "|" symbol allows you to use a multiline command.
-        python3 -m pip install -r requirements.txt
+      # Install all our dependencies.
+      - name: Install dependencies
+        run: |  # Using a "|" symbol allows you to use a multiline command.
+          python3 -m pip install -r requirements.txt
 
-    # Run the tests
-    - name: Unit tests
-      run: |
-        python -m pytest tests  # Just as you would run it from Terminal.
+      # Run the tests
+      - name: Unit tests
+        run: |
+          python -m pytest tests  # Just as you would run it from Terminal.
