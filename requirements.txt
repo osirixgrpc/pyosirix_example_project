@@ -1,2 +1,5 @@
-numpy==2.0.1
-setuptools==47.1.0
+numpy
+Pillow
+scikit_image
+setuptools
+skimage
