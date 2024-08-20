@@ -19,6 +19,21 @@ class Text2Image:
         self.max_shape = max_shape
 
     @staticmethod
+    def append_value_to_tuple(v, t: Tuple) -> Tuple:
+        """ Appends a value to a tuple.
+
+        Args:
+            v: The value to append.
+            t (Tuple): The tuple to append to.
+
+        Returns:
+            Tuple: The new tuple.
+        """
+        l = [x for x in t]
+        l.append(v)
+        return tuple(l)
+
+    @staticmethod
     def pad_image(image: Image, pad: Tuple[int, int, int, int] = (0, 0, 0, 0)) -> Image:
         """ Pad a Pillow image.
 
@@ -199,7 +214,12 @@ class Text2Image:
             NDArray: The pasted array.
         """
         if array.ndim == 3:
-            image = Image.fromarray(array, mode='RGB')
+            if array.shape[-1] == 3:
+                image = Image.fromarray(array, mode='RGB')
+            elif array.shape[-1] == 4:
+                image = Image.fromarray(array, mode='RGBA')
+            else:
+                ValueError("Last dimension of array must be 3 or 4.")
         elif array.ndim == 2:
             image = Image.fromarray(array.astype("float32"), mode='F')
         else:
@@ -228,12 +248,13 @@ class Text2Image:
             value (float, optional): A value to use for the text if `mode` is greyscale.
                 Defaults to 1.0.
             color (Tuple[int, int, int]): The color of the text if `mode` is rgb.
-                Defaults to (255, 255, 255).
+                Defaults to (255, 255, 255). Can be 4 elements if `mode` is RGBA, though not
+                necessary.
             bg_value (float, optional): A value to use for the background if `mode` is greyscale.
                 Defaults to 0.0.
             bg_color (Tuple[int, int, int]): The color of the background if `mode` is rgb.
-                Defaults to (0, 0, 0).
-            mode (str, optional): One of "F" (greyscale) or "RGB". Default is "F".
+                Defaults to (0, 0, 0). Can be 4 elements if `mode` is RGBA, though not necessary.
+            mode (str, optional): One of "F" (greyscale), "RGB" or "RGBA". Default is "F".
             align (str, optional): One of "left", "center", or "right".
             pad (Tuple[int, int, int, int]): The pad size of the image (left, right, top, bottom).
                 Defaults to (0, 0, 0, 0).
@@ -243,8 +264,18 @@ class Text2Image:
         """
         if mode == "F":
             img = Image.new('L', self.max_shape, 0)
-        else:
+        elif mode == "RGB":
+            color = color[0:3]  # Remove alpha if present.
+            bg_color = bg_color[0:3]
             img = Image.new('RGB', self.max_shape, bg_color)
+        elif mode == "RGBA":
+            if len(color) == 3:
+                color = self.append_value_to_tuple(255, color)  # Add alpha if not present.
+            if len(bg_color) == 3:
+                bg_color = self.append_value_to_tuple(255, bg_color)
+            img = Image.new('RGB', self.max_shape, bg_color)
+        else:
+            raise ValueError("Mode must be F, RGB, or RGBA.")
         draw = ImageDraw.Draw(img)
 
         # Optional: Load a font, otherwise it will use the default font
