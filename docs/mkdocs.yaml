@@ -13,15 +13,11 @@ theme:
   name: material  # This theme is available through "mkdocs materials" extension.  This is a popular and powerful tool.
   locale: en  # The language of the site.
   logo: assets/logo/logo.png  # Is there a logo?  It's not all that necessary, but here for completeness.
-  highlightjs: true
-  favicon: assets/logo/favicon.ico
-  hljs_languages:
+  highlightjs: true  # We will allow highlight.js to perform syntax coloring for us.
+  favicon: assets/logo/favicon.ico  # You can add a favicon (little logo that appears in the browser tabs - fancy!)
+  hljs_languages:  # What languages will be colored?
       - python
-      - json
       - console
-      - javascript
-      - typescript
-      - dockerfile
       - bash
       - shell
       - sh
@@ -34,21 +30,21 @@ theme:
 
 plugins:
   - search
-  - mkdocstrings
+  - mkdocstrings  # This is an additional extension that creates documentation automatically from your code docstrings.
   - mkdocstrings:
       default_handler: python
       handlers:
         python:
-          paths: [ "../pyosirix" ]
+          paths: [ ".." ]
 
 # Documentation extensions.
 markdown_extensions:
-  - pymdownx.highlight:  # See: https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
-      anchor_linenums: true
+  - pymdownx.highlight:  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks, another useful extension.
+      anchor_linenums: true  # Provide line numbers for any code snippets.
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets  # Automatically copy/paste code into your docs: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/
   - pymdownx.superfences
   - attr_list  # Attribute lists, used here for images.
   - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
@@ -56,37 +52,14 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.snippets:
-      base_path: ["..", "docs/pyosirix/examples"] # Root of the repository
+      base_path: [".."] # Where is the root of the repository?
 
-# The page tree. This links the layout of the generated documentation site to the page contents.
+# Define the overall layout (tree structure) of the documentation, in the format:
+#      Displayed name: docfile_page.md
+# If no docfile_page is defined, this means you are defining a group of pages, tabs should be consistent.
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
-  - Getting Started: getting_started.md
-  - pyOsiriX:
-    - Getting Started: pyosirix/README.md
-    - API:
-      - browser_controller: pyosirix/api/browser_controller.md
-      - dcm_pix: pyosirix/api/dcm_pix.md
-      - dicom: pyosirix/api/dicom.md
-      - osirix_utilities: pyosirix/api/osirix_utilities.md
-      - roi: pyosirix/api/roi.md
-      - viewer_controller: pyosirix/api/viewer_controller.md
-      - vr_controller: pyosirix/api/vr_controller.md
-    - Examples:
-      - Gallery: pyosirix/examples/gallery.md
-    - Contributing:
-      - Home: pyosirix/contributing/CONTRIBUTING.md
-  - API:
-    - Basics: api/README.md
-    - Regions of Interest: api/roi.md
-    - ROI Volumes: api/roivolume.md
-    - DCMPix: api/dcmpix.md
-    - VR Controller: api/vrcontroller.md
-    - Viewer Controller: api/viewercontroller.md
-    - Browser Controller: api/browsercontroller.md
-    - Dicom Image: api/dicomimage.md
-    - Dicom Series: api/dicomseries.md
-    - Dicom Study: api/dicomstudy.md
+  - Documentation: documentation.md
   - Contributing:
     - Home: contributing/CONTRIBUTING.md
     - Code of Conduct: contributing/CODE_OF_CONDUCT.md
