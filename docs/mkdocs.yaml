@@ -61,5 +61,5 @@ nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Documentation: documentation.md
   - Contributing:
-    - Home: contributing/CONTRIBUTING.md
-    - Code of Conduct: contributing/CODE_OF_CONDUCT.md
+    - Home: CONTRIBUTING.md
+    - Code of Conduct: CODE_OF_CONDUCT.md

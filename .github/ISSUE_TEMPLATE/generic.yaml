@@ -1,0 +1,48 @@
+name: Generic
+description: A generic issue
+title: "Generic issue: "
+labels: ["generic"]
+projects: ["osirixgrpc/pyosirix_example_project"]
+assignees:
+  - mdblackledge
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in this project!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: input
+    id: project-version
+    attributes:
+      label: Project Version
+      description: What version of the project are you running?
+      placeholder: "0.0.1-dev0"
+    validations:
+      required: true
+  - type: textarea
+    id: issue-text
+    attributes:
+      label: What would you like to see?
+      description: |
+        Let us know in as much detail as possible about your issue.
+      placeholder: |
+        **Issue description**
+        Provide as much detail as possible so that we can assist you.
+
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct.
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
