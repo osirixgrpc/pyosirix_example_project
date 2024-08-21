@@ -7,7 +7,7 @@ docs_dir: docs
 
 # Copyright
 copyright: Copyright &copy; Matthew D Blackledge  # Provide some copyright information if you like.
-edit_uri: edit/main/docs/docs  # If someone edits the page, where will it link to?
+edit_uri: edit/main/docs  # If someone edits the page, where will it link to?
 use_directory_urls: true
 theme:
   name: material  # This theme is available through "mkdocs materials" extension.  This is a popular and powerful tool.
