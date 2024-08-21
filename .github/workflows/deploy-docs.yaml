@@ -23,10 +23,8 @@ jobs:
 
       - name: Build MkDocs Site
         run: |
-          cd docs
           mkdocs build
     
       - name: Deploy docs to GitHub Pages
         run: |
-          cd docs
           mkdocs gh-deploy --force
