@@ -12,9 +12,9 @@ use_directory_urls: true
 theme:
   name: material  # This theme is available through "mkdocs materials" extension.  This is a popular and powerful tool.
   locale: en  # The language of the site.
-  logo: assets/logo/logo.png  # Is there a logo?  It's not all that necessary, but here for completeness.
+  logo: docs/assets/logo/logo.png  # Is there a logo?  It's not all that necessary, but here for completeness.
   highlightjs: true  # We will allow highlight.js to perform syntax coloring for us.
-  favicon: assets/logo/favicon.ico  # You can add a favicon (little logo that appears in the browser tabs - fancy!)
+  favicon: docs/assets/logo/favicon.ico  # You can add a favicon (little logo that appears in the browser tabs - fancy!)
   hljs_languages:  # What languages will be colored?
       - python
       - console
@@ -35,7 +35,7 @@ plugins:
       default_handler: python
       handlers:
         python:
-          paths: [ ".." ]
+          paths: [ "." ]
 
 # Documentation extensions.
 markdown_extensions:
@@ -52,7 +52,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.snippets:
-      base_path: [".."] # Where is the root of the repository?
+      base_path: ["."] # Where is the root of the repository?
 
 # Define the overall layout (tree structure) of the documentation, in the format:
 #      Displayed name: docfile_page.md
