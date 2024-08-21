@@ -3,7 +3,7 @@
 site_name: pyOsiriX Example Project (ver 0.0.1-dev0)
 site_url:
 repo_url: https://github.com/osirixgrpc/pyosirix_example_project
-docs_dir: ["."]
+docs_dir: "."
 
 # Copyright
 copyright: Copyright &copy; Matthew D Blackledge  # Provide some copyright information if you like.
