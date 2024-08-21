@@ -83,7 +83,7 @@ class Text2Viewer:
             new_array = t2i.paste_text_in_array(text,
                                                 pix.image,
                                                 location=3,  # Top left
-                                                scale=0.4,
+                                                scale=0.75,
                                                 offset=0.05,
                                                 remove_background=self.remove_background,
                                                 align="left",
