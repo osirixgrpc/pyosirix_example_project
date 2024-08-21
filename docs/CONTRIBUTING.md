@@ -85,6 +85,7 @@ There are several core files and directories at the [root of the project](https:
 | .bumpversion.cfg        | Rules to increment version numbers scattered throughout the project.                                       |
 | .gitignore              | What Git will __not__ keep track of during version control.                                                |
 | LICENSE                 | The license for all code within this project.                                                              |
+| mkdocs.yaml             | The configuration file for creating documentation with MkDocs.                                             |
 | pyproject.toml          | The configuration file for packaging and uploading this project to the Python Package Index.               |
 | README.md               | A symlink to the projects main README.md file located within the __docs__ directory.                       |
 | requirements.txt        | The core library requirements for the project.                                                             |
