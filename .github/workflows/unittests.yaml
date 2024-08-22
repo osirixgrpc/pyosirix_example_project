@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - dev
 
 # Tell GH the jobs you want to perform.
 # Side note: Some of these keywords cannot be changed (jobs, runs-on, steps), but some are flexible (e.g. run-tests).
