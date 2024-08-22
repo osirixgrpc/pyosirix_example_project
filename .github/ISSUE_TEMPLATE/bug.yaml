@@ -37,7 +37,7 @@ body:
     attributes:
       label: Project Version
       description: What version of the project are you running?
-      placeholder: "0.0.1-dev4"
+      placeholder: "0.0.1-dev5"
     validations:
       required: true
   - type: input
