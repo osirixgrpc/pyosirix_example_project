@@ -28,6 +28,7 @@ jobs:
       - name: Install dependencies
         run: |  # Using a "|" symbol allows you to use a multiline command.
           python3 -m pip install -r requirements.txt
+          python3 -m pip install setuptools pytest
 
       # Run the tests, just as you would run it from Terminal.
       - name: Unit tests

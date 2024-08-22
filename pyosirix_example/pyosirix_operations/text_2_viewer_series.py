@@ -6,7 +6,7 @@ from osirix.dcm_pix import DCMPix
 from osirix.viewer_controller import ViewerController
 import numpy as np
 
-from utilities.text_2_image import Text2Image
+from pyosirix_example.utilities.text_2_image import Text2Image
 
 
 class Text2Viewer:

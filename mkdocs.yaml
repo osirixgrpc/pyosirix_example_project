@@ -18,6 +18,8 @@ theme:
   hljs_languages:  # What languages will be colored?
       - python
       - console
+      - toml
+      - yaml
       - bash
       - shell
       - sh

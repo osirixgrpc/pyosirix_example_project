@@ -1,5 +1,4 @@
 # See https://setuptools.pypa.io/ for more info on how to perform setup.
-
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
@@ -9,12 +8,28 @@ name = "pyosirix_example_project"
 version = "0.0.1-dev0"
 description = "An example of a Python project that can be used to install into OsiriX"
 authors = [
-    { name = "Matthew Blackledge", email = "matthew.blackledge@icr.ac.uk" }
+    { name = "Matthew D Blackledge", email = "matthew.blackledge@icr.ac.uk" }
+]
+maintainers = [
+  {name = "Matthew D Blackledge", email = "mattyblackledge@gmail.com"}
+]
+readme = {name = "Readme file", file = "docs/README.md"}
+license = {name = "MIT", file = "LICENSE.txt", url = "https://opensource.org/license/mit"}
+keywords = [
+    "Dicom",
+    "Medical Imaging",
+    "Image Processing",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
 ]
 
 [tool.setuptools]
-packages = ["package_1", "package_2"]
+packages = ["pyosirix_example"]
 
-# Custom command to handle post-install tasks
-[tool.setuptools.commands]
-install = "your_custom_install.CustomInstallCommand"
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

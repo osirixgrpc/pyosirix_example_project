@@ -1,0 +1,45 @@
+name: Distribute project code to PyPI (TestPyPI if from dev)
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  publish-pypi:
+    needs: build
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade build twine
+          python3 -m pip install -r requirements.txt
+
+      - if: github.ref == 'refs/heads/dev'
+        name: Build and publish project (dev)
+        run: |
+          python3 -m build
+          python3 -m twine upload --repository testpypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TEST_TOKEN }}
+
+      - if: github.ref == 'refs/heads/main'
+        name: Build and publish project (main)
+        run: |
+          python3 -m build
+          python3 -m twine upload --repository pypi dist/*
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
