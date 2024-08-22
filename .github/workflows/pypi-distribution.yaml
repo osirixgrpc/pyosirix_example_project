@@ -8,8 +8,6 @@ on:
 
 jobs:
   publish-pypi:
-    needs: build
-    
     runs-on: ubuntu-latest
 
     steps:

@@ -1,1 +1,1 @@
-import text_2_image
+from pyosirix_example.utilities import text_2_image
