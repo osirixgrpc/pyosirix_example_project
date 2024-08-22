@@ -59,7 +59,15 @@ markdown_extensions:
 # If no docfile_page is defined, this means you are defining a group of pages, tabs should be consistent.
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
-  - Documentation: documentation.md
+  - Instructions: plugin_instructions.md
+  - Python packaging: pip.md
+  - DVC: dvc.md
+  - Documentation: mkdocs.md
+  - GitHub: github.md
+  - pyOsiriX: pyosirix.md
+  - Unit testing: pytest.md
+  - Version Control: bumpversion.md
   - Contributing:
     - Home: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
+
