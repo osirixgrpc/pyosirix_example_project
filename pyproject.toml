@@ -13,7 +13,7 @@ authors = [
 maintainers = [
   {name = "Matthew D Blackledge", email = "mattyblackledge@gmail.com"}
 ]
-readme = {name = "Readme file", file = "docs/README.md"}
+readme = "docs/README.md"
 license = {name = "MIT", file = "LICENSE.txt", url = "https://opensource.org/license/mit"}
 keywords = [
     "Dicom",
@@ -29,7 +29,9 @@ classifiers = [
 ]
 
 [tool.setuptools]
-packages = ["pyosirix_example"]
+packages = ["pyosirix_example",
+            "pyosirix_example.pyosirix_operations",
+            "pyosirix_example.utilities"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
