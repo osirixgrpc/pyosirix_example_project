@@ -23,7 +23,7 @@ body:
     attributes:
       label: Project Version
       description: What version of the project are you running?
-      placeholder: "0.0.1-dev2"
+      placeholder: "0.0.1-dev3"
     validations:
       required: true
   - type: textarea
