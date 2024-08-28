@@ -1,8 +1,10 @@
+""" An example configuration file to demonstrate package-wide fixture sharing. """
+
 import pytest
 
-from pyosirix_example.utilities.text_2_image import Text2Image
 
-
-@pytest.fixture(scope="function")
-def text2image_instance():
-    yield Text2Image()
+@pytest.fixture(scope='function')
+def shared_data():
+    """ Example fixture, yielding test data shared across all test files in this directory.
+    """
+    yield [1, 2, 3, 4, 5]

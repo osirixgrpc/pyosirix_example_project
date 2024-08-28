@@ -3,7 +3,7 @@ An example project to demonstrate a method for creating a full project for use i
 
 It uses the following project structure. Look inside each file to see a description of what it does.
 
-```python
+```text
 pyosirix_example_project/  # The root directory
 ├── .github/               # Where configuration files for GitHub are located.
 │   └── workflows/         # Where you define GitHub actions to be performed when you push code. Run automatically.
@@ -28,6 +28,9 @@ pyosirix_example_project/  # The root directory
 ├── requirements.txt       # Tell the user (and pip) what the library dependencies are.
 └── VERSION                # It can be helpful for clarity to store a master version file.
 ```
+
+These pages are only meant to get you started. As you learn more about code management and CI/CD, you will become
+familiar with other available tools and may wish to incorporate those also.
 
 ## Requirements
 A good way to generate the requirements file automatically is run [`pipreqs`](https://github.com/bndr/pipreqs) as follows from the root directory:

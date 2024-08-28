@@ -17,7 +17,7 @@ class Text2Viewer:
         # Where we expect to find this file.
         if text_file is None:
             current_path = os.path.dirname(os.path.abspath(__file__))
-            text_file = os.path.join(current_path, "..", "data", "viewer_text.txt")
+            text_file = os.path.join(current_path, "..", "..", "data", "viewer_text.txt")
         self._text_file = text_file
         self._text_rgb = text_rgb
         self._background_rgb = background_rgb

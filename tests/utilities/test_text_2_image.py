@@ -1,5 +1,15 @@
+""" Unit tests for the text_2_image module. """
+
 from PIL import Image, ImageDraw
 import numpy as np
+import pytest
+
+from pyosirix_example.utilities.text_2_image import Text2Image
+
+
+@pytest.fixture(scope="function")  # Fixtures defined here are restricted to tests in this file.
+def text2image_instance():
+    yield Text2Image()
 
 
 def test_append_value_to_tuple(text2image_instance):

@@ -50,11 +50,17 @@ markdown_extensions:
   - pymdownx.superfences
   - attr_list  # Attribute lists, used here for images.
   - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
-  - admonition
+  - admonition  # For including things like tip boxes, info boxes, warnings.
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.snippets:
       base_path: ["."] # Where is the root of the repository?
+  - pymdownx.arithmatex:
+      generic: true  # Needed to include LateX in our documentation.
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js  # Also required for LateX
 
 # Define the overall layout (tree structure) of the documentation, in the format:
 #      Displayed name: docfile_page.md
@@ -62,13 +68,13 @@ markdown_extensions:
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
   - Instructions: plugin_instructions.md
-  - Python packaging: pip.md
-  - DVC: dvc.md
-  - Documentation: mkdocs.md
-  - GitHub: github.md
-  - pyOsiriX: pyosirix.md
-  - Unit testing: pytest.md
-  - Version Control: bumpversion.md
+  - Python packaging with PIP: pip.md
+  - Data control with DVC: dvc.md
+  - Documentation with MkDocs: mkdocs.md
+  - CI/CD with GitHub: github.md
+  - Installing pyOsiriX scripts: pyosirix.md
+  - Unit testing with PyTest: pytest.md
+  - Version Control with bump2version: bumpversion.md
   - Contributing:
     - Home: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
