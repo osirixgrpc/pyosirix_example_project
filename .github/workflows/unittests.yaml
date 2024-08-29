@@ -33,5 +33,4 @@ jobs:
 
       # Run the tests, just as you would run it from Terminal.
       - name: Unit tests
-        run: |
-          python -m pytest tests
+        run: python -m pytest tests

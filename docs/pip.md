@@ -71,7 +71,7 @@ is the current standard for doing this (superseding `setup.py`, which you may fi
 Minimal Language_ (toml) file is designed to be easy to read by humans, providing all required configuration options in 
 a single file. The key sections to this file are:
 
-`[build-system]`
+#### `[build-system]`
 
 This tells pip which _backend_ to use. Here we use the default [setuptools](https://setuptools.pypa.io), but others 
 exist, including [hatch](https://hatch.pypa.io). You can leave this as it is.
@@ -81,7 +81,7 @@ pyproject.toml:2:4
 ----8<----
 ```
 
-`[project]`
+#### `[project]`
 
 This defines project specific characteristics, which must be adapted for your project.
 - `name`: The name of the project as it will be defined on PyPI (`pip install xyz`, where `name = "xyz"`).
@@ -101,7 +101,7 @@ pyproject.toml:6:29
 ----8<----
 ```
 
-`[tool.tool_name]`
+#### `[tool.tool_name]`
 
 This section is used for tool-specific configurations (setuptools in this instance). There are many options available 
 depending on which back end you use so make sure to check out the documentation for a full breakdown. The ones below

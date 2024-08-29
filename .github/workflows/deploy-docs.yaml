@@ -22,9 +22,7 @@ jobs:
         run: pip install -r docs/requirements.txt
 
       - name: Build MkDocs Site
-        run: |
-          mkdocs build
+        run: mkdocs build
     
       - name: Deploy docs to GitHub Pages
-        run: |
-          mkdocs gh-deploy --force
+        run: mkdocs gh-deploy --force

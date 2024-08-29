@@ -2,11 +2,11 @@ name: Bug Report
 description: File a bug report
 title: "Bug: "
 labels: ["bug"]
-projects: ["osirixgrpc/pyosirix_example_project"]
 assignees:
-  - mdblackledge  # Who is automatically assigned to this bug (GH account name)
+  - mdblackledge  # PLEASE CHANGE! Who is automatically assigned to this bug (GH account name)
 body:
   - type: markdown
+    id: welcome
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!

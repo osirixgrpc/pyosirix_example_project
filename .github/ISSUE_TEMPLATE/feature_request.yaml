@@ -2,9 +2,8 @@ name: Feature Request
 description: Request a new feature
 title: "Feature: "
 labels: ["feature_request"]
-projects: ["osirixgrpc/pyosirix_example_project"]
 assignees:
-  - mdblackledge
+  - mdblackledge # PLEASE CHANGE! Who is automatically assigned to this bug (GH account name)
 body:
   - type: markdown
     attributes:

@@ -2,9 +2,8 @@ name: Documentation
 description: Improve our documentation
 title: "Documentation: "
 labels: ["documentation"]
-projects: ["osirixgrpc/pyosirix_example_project"]
 assignees:
-  - mdblackledge
+  - mdblackledge # PLEASE CHANGE! Who is automatically assigned to this bug (GH account name)
 body:
   - type: markdown
     attributes:
