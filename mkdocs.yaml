@@ -1,6 +1,6 @@
 # This provides configuration for mkdocs documentation generation.
 # For more configuration options, see https://www.mkdocs.org/user-guide/configuration/
-site_name: pyOsiriX Example Project (ver 0.0.1-dev8)
+site_name: pyOsiriX Example Project (ver 0.0.1-dev9)
 site_url:
 repo_url: https://github.com/osirixgrpc/pyosirix_example_project
 docs_dir: "docs"
