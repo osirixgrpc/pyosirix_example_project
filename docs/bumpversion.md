@@ -113,8 +113,8 @@ Let's take a look at the `.bumpversion.cfg` file contained within this project.
 ### `[bumpversion]`
 This section defines the main settings for the version bumping process.
 
- - `current_version = 0.0.1-dev.11`: Specifies the current version of the project. Here, it is set to 0.0.1-dev.11, 
-    representing `MAJOR.MINOR.PATCH-RELEASE.BUILD`. 
+ - `current_version = 0.0.1-dev.11`: Specifies the current version of the project representing 
+   `MAJOR.MINOR.PATCH-RELEASE.BUILD`. 
  - `commit = True`: Indicates that `bump2version` will automatically commit to the local git repository after a
     successful run.
  - `message = Bump version: {current_version} → {new_version}`: The message used after a successful git commit.
