@@ -18,15 +18,18 @@ encourage smaller, more frequent code updates, which comes with several benefits
 If you want to know more about the theory and practise of CI/CD there is a great 
 [article by Red Hat](https://www.redhat.com/en/topics/devops/what-is-ci-cd) to get your started on your . 
 
-CI/CD automation is managed in GitHub through [_Actions_](#actions), with bug reporting, project planning and 
-maintenance, and software support provided through [_Issues_](#issues).
+CI/CD automation is managed in GitHub through [_Actions_](#actions), with bug reporting, project planning/maintenance, 
+and software support provided through [_Issues_](#issues). Actions and issue templates are defined using YAML files, 
+human-readable data structures often used for configuration of projects and data transfer. It is quite quick to learn
+and more details can be found in this 
+[nice tutorial](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
 
 ## Actions
 GitHub Actions provides support for automating processes within GitHub repositories. It is a highly flexible interface
 that can allow you to automatically perform operations when some _trigger_ occurs within the repository. This could,
-for example, be someone pushing code to the repository, creating a release of a specific version of your code, even
-somebody creating a new [issue](#issues). We can only cover the very basics here, but please see the nice 
-[documentation](https://docs.github.com/en/actions) provided by GitHub for a more in-depth discussion.
+for example, be someone pushing code to the repository, creating a release of a specific version of your code, or even
+somebody creating a new [issue](#issues). We can only cover the very basics here, but please see the 
+[official documentation](https://docs.github.com/en/actions) provided by GitHub for a more in-depth discussion.
 
 
 Actions are defined using YAML files contained within the following directory of your project:
@@ -36,7 +39,7 @@ Actions are defined using YAML files contained within the following directory of
 ```
 
 The structure of these files is relatively straightforward once you get used to them. In this project, for example,
-there is a `unittests.yaml` workflow that performs all code [unit tests](pytest.md) everytime code is pushed to the 
+there is a `unittests.yaml` workflow that performs all [unit tests](pytest.md) everytime code is pushed to the 
 `main` or `dev` branches. The content of this file is shown below - we will break down and explain each of the 
 components later on.
 
@@ -48,8 +51,8 @@ components later on.
 
 __The breakdown__
 
-A YAML file is effectively just a bunch of (potentially nested) `key: value` pairs. The three top-level key-value pairs 
-that _must_ be included in your workflow file are:
+A YAML file is effectively a set of (potentially nested) `key: value` pairs, much like a dictionary in Python. The three 
+top-level key-value pairs that _must_ be included in your workflow file are:
 
  - `name`: A string that will represent the name of your action. This is how you will identify the action within the 
    GitHub interface so call it something sensible.
@@ -60,7 +63,44 @@ that _must_ be included in your workflow file are:
  - `jobs`: A list of jobs to perform as part of this workflow. In this case there is only a single job, `run-tests`, 
    but there can be more than one. By default, jobs runs in parallel, but you can make them dependent on one another 
    (sequential) using the [`jobs.<job_id>.needs`](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobsjob_idneeds) 
-   option. 
+   option.
+
+!!! note
+
+    In YAML, lists are defined by prefixing each element with a hyphen (`-`), without requiring a specific key for each 
+    element. In the example above, each job in the GitHub Actions workflow is represented as a dictionary, where the key 
+    is the `job-id`, and the value is a nested dictionary containing the job's details. 
+   
+    However, the steps within each job are defined as a list of dictionaries, without explicit keys. This approach 
+    emphasizes that steps are executed sequentially, in the order they are listed, while jobs themselves can run in 
+    parallel or in any order unless dependencies are explicitly defined.
+
+!!! note
+
+    Just like Python, YAML relies heavily on indentation to define the structure and hierarchy of the data. The level 
+    of indentation indicates which elements are nested within others. In the examples below, the difference in the 
+    indentation of the offices dictionary significantly alters the data structure:
+
+     - In Definition A, the offices are associated with Alice specifically, as they are indented under her entry in the 
+       people list.
+     - In Definition B, the offices are not related to Bob at all. Instead, they are a separate top-level entry outside 
+       the people list.
+
+    ```{.yaml title="Definition A"}
+    people:
+        - name: "Alice"
+          offices:
+              - Address: 123 Old Bormpton Road, London, UK
+              - Address: 15 Cotswold Road, Sutton, UK
+    ```
+
+    ```{.yaml title="Definition B"}
+    people:
+        - name: "Bob"
+    offices:
+        - Address: 123 Old Bormpton Road, London, UK
+        - Address: 15 Cotswold Road, Sutton, UK
+    ```
 
 There are many options for jobs and their executed steps depending on what you need. We cannot list them all
 here, but a complete list is provided in the [GitHub workflow syntax page](https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#jobs).

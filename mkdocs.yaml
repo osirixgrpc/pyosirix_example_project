@@ -52,7 +52,7 @@ markdown_extensions:
   - md_in_html  # Markdown in HTML for adding markdown syntax to HTML, used here for images.
   - admonition  # For including things like tip boxes, info boxes, warnings.
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.tabbed
   - pymdownx.snippets:
       base_path: ["."] # Where is the root of the repository?
   - pymdownx.arithmatex:
@@ -67,14 +67,15 @@ extra_javascript:
 # If no docfile_page is defined, this means you are defining a group of pages, tabs should be consistent.
 nav:
   - Home: README.md  # Where the home page of the documentation will be stored.
-  - Instructions: plugin_instructions.md
-  - Python packaging with PIP: pip.md
-  - Data control with DVC: dvc.md
-  - Documentation with MkDocs: mkdocs.md
-  - CI/CD with GitHub: github.md
-  - Installing pyOsiriX scripts: pyosirix.md
-  - Unit testing with PyTest: pytest.md
-  - Version Control with bump2version: bumpversion.md
+  - Plugin Instructions: plugin_instructions.md
+  - Project Components:
+    - CI/CD with GitHub: github.md
+    - Data control with DVC: dvc.md
+    - Documentation with MkDocs: mkdocs.md
+    - Installing pyOsiriX scripts: pyosirix.md
+    - Python packaging with PIP: pip.md
+    - Unit testing with PyTest: pytest.md
+    - Version Control with bump2version: bumpversion.md
   - Contributing:
     - Home: CONTRIBUTING.md
     - Code of Conduct: CODE_OF_CONDUCT.md
