@@ -16,10 +16,10 @@ encourage smaller, more frequent code updates, which comes with several benefits
    updates, keeping customers satisfied with quicker access to new features and fixes.
 
 If you want to know more about the theory and practise of CI/CD there is a great 
-[article by Red Hat](https://www.redhat.com/en/topics/devops/what-is-ci-cd) to get your started on your . 
+[article by Red Hat](https://www.redhat.com/en/topics/devops/what-is-ci-cd) to get your started on your journey. 
 
 CI/CD automation is managed in GitHub through [_Actions_](#actions), with bug reporting, project planning/maintenance, 
-and software support provided through [_Issues_](#issues). Actions and issue templates are defined using YAML files, 
+and "customer" support provided through [_Issues_](#issues). Actions and issue templates are defined using YAML files, 
 human-readable data structures often used for configuration of projects and data transfer. It is quite quick to learn
 and more details can be found in this 
 [nice tutorial](https://www.cloudbees.com/blog/yaml-tutorial-everything-you-need-get-started).
