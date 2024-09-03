@@ -9,7 +9,7 @@ import numpy as np
 from pyosirix_example.utilities.text_2_image import Text2Image
 
 
-class Text2Viewer:
+class Client:
     """ Burn text to images on an OsiriX viewer controller.
     """
     def __init__(self, text_file: str = None, text_rgb: Tuple[int, int, int] = (255, 255, 255),
@@ -140,7 +140,7 @@ class Text2Viewer:
         self.write_text_in_selected_viewer_controller(text)
 
 
-# There should be at least one "hook" file that runs during execution of the script.
+# How to run the client.
 if __name__ == '__main__':
-    t2v = Text2Viewer()
-    t2v.run()
+    # You could process arguments here.
+    Client().run()
