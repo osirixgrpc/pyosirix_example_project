@@ -1,4 +1,7 @@
 # Continuous Integration and Continuous Deployment (CI/CD) with GitHub
+
+## What is CI/CD?
+
 Continuous Integration and Continuous Deployment (CI/CD) are essential practices in modern software development, 
 particularly in methodologies like DevOps and its AI-focused counterpart, MLOps. The primary goal of CI/CD is to 
 encourage smaller, more frequent code updates, which comes with several benefits:
@@ -18,6 +21,8 @@ encourage smaller, more frequent code updates, which comes with several benefits
 If you want to know more about the theory and practise of CI/CD there is a great 
 [article by Red Hat](https://www.redhat.com/en/topics/devops/what-is-ci-cd) to get your started on your journey. 
 
+## CI/CD in GitHub
+
 CI/CD automation is managed in GitHub through [_Actions_](#actions), with bug reporting, project planning/maintenance, 
 and "customer" support provided through [_Issues_](#issues). Actions and issue templates are defined using YAML files, 
 human-readable data structures often used for configuration of projects and data transfer. It is quite quick to learn
@@ -31,8 +36,8 @@ for example, be someone pushing code to the repository, creating a release of a 
 somebody creating a new [issue](#issues). We can only cover the very basics here, but please see the 
 [official documentation](https://docs.github.com/en/actions) provided by GitHub for a more in-depth discussion.
 
-
-Actions are defined using YAML files contained within the following directory of your project:
+### Workflow files
+Actions are defined using YAML _workflow files__ contained within the following directory of your project:
 
 ```{.txt title="Location of files defining GitHub actions"}
 .github/workflows/
@@ -49,7 +54,7 @@ components later on.
 ----8<----
 ```
 
-__The breakdown__
+### Workflow file breakdown
 
 A YAML file is effectively a set of (potentially nested) `key: value` pairs, much like a dictionary in Python. The three 
 top-level key-value pairs that _must_ be included in your workflow file are:
