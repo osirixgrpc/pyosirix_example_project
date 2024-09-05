@@ -35,3 +35,10 @@ packages = ["pyosirix_example",
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+
+# Include all necessary files in the package
+[tool.setuptools.package-data]
+my_package = ["data/*.dvc"]  # Include all .dvc files in the data directory
+
+[tool.setuptools.include]
+files = ["data/*.dvc"]  # Ensure that all .dvc files are included in the source distribution
