@@ -30,7 +30,8 @@ classifiers = [
 
 [tool.setuptools]
 packages = ["pyosirix_example",
-            "pyosirix_example.pyosirix_operations",
+            "pyosirix_example.client",
+            "pyosirix_example.server",
             "pyosirix_example.utilities"]
 
 [tool.setuptools.dynamic]
@@ -38,7 +39,4 @@ dependencies = {file = ["requirements.txt"]}
 
 # Include all necessary files in the package
 [tool.setuptools.package-data]
-my_package = ["data/*.dvc"]  # Include all .dvc files in the data directory
-
-[tool.setuptools.include]
-files = ["data/*.dvc"]  # Ensure that all .dvc files are included in the source distribution
+my_package = ["data/*.dvc"]
