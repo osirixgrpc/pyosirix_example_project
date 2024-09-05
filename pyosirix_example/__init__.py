@@ -4,6 +4,6 @@ __maintainer__ = "Matthew D Blackledge"
 __license__ = "MIT"
 __copyright__ = "Copyright (c) 2024, Matthew D Blackledge"
 
-from pyosirix_example import pyosirix_operations, utilities
+from pyosirix_example import server, client, utilities
 
 

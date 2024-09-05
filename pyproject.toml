@@ -38,6 +38,6 @@ include-package-data = true
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
-# Include all necessary files in the package
+# Include all necessary server data files in the package
 [tool.setuptools.package-data]
-my_package = ["*.dvc"]
+pyosirix_example = ["server/data/*.dvc"]
