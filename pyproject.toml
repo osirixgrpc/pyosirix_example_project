@@ -39,8 +39,5 @@ include-package-data = true
 dependencies = {file = ["requirements.txt"]}
 
 # Include all necessary files in the package
-[tool.setuptools.packages.find]
-where = ["pyosirix_example"]
-
 [tool.setuptools.package-data]
 my_package = ["*.dvc"]
