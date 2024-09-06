@@ -24,10 +24,14 @@ jobs:
           python3 -m pip install --upgrade build twine
           python3 -m pip install -r requirements.txt
 
-      - name: Add repository details
+      - name: Add repository details to __init__.py
         run: |
           echo "__gh_repo__ = \"$GITHUB_REPOSITORY\"" >> pyosirix_example/__init__.py
           echo "__gh_hash__ = \"$(git rev-parse HEAD)\"" >> pyosirix_example/__init__.py
+        shell: bash
+
+      - name: Confirm Changes
+        run: cat pyosirix_example/__init__.py
 
       - if: github.ref == 'refs/heads/dev'
         name: Build and publish project (dev)
