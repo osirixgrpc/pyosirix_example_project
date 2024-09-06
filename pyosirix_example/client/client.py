@@ -3,9 +3,8 @@ from osirix.dcm_pix import DCMPix
 from osirix.viewer_controller import ViewerController
 import grpc
 
-import server_pb2_grpc
-import server_pb2
-
+from pyosirix_example.grpc_protocols import server_pb2_grpc
+from pyosirix_example.grpc_protocols import server_pb2
 
 class Client:
     """ Burn text to images on an OsiriX viewer controller.

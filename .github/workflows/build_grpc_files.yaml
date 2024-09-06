@@ -1,0 +1,25 @@
+name: Build gRPC Files
+
+on:
+  workflow_call:  # Makes this workflow reusable
+
+jobs:
+  build-grpc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3
+
+      - name: Install gRPC tools
+        run: |
+          pip install grpcio grpcio-tools
+
+      - name: Compile Protobuf files
+        run: |
+          python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. pyosirix_example/grpc_protocols/server.proto

@@ -4,9 +4,9 @@ import grpc
 import numpy as np
 
 from data_loader import DataLoader
-import server_pb2_grpc
-import server_pb2
-from ..utilities.text_2_image import Text2Image
+from pyosirix_example.grpc_protocols import server_pb2_grpc
+from pyosirix_example.grpc_protocols import server_pb2
+from pyosirix_example.utilities.text_2_image import Text2Image
 
 class Service(server_pb2_grpc.ServiceServicer):
     def __init__(self):
