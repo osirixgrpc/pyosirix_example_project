@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pyosirix_example_project"
-version = "0.0.1-dev.15"
+version = "0.0.1-dev.16"
 description = "An example of a Python project that can be used to install into OsiriX"
 authors = [
     { name = "Matthew D Blackledge", email = "matthew.blackledge@icr.ac.uk" }
