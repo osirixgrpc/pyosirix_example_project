@@ -30,12 +30,6 @@ jobs:
           echo "__gh_hash__ = \"$(git rev-parse HEAD)\"" >> pyosirix_example/__init__.py
         shell: bash
 
-      - name: Confirm Changes
-        run: cat pyosirix_example/__init__.py
-
-      - name: Clean previous build artifacts
-        run: rm -rf build dist *.egg-info
-
       - if: github.ref == 'refs/heads/dev'
         name: Build and publish project (dev)
         run: |

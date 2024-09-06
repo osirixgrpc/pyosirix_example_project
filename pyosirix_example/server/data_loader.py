@@ -2,14 +2,17 @@ import os
 
 import dvc
 
+import pyosirix_example
+
 
 class DataLoader:
     def __init__(self):
         self.data_directory = os.path.join(__file__, "data")
+        os.makedirs(self.data_directory, exist_ok=True)
         self.repo_path = "https://github.com/osirixgrpc/pyosirix_example_project"
 
     @property
-    def text_file_path(self) -> str:
+    def data_path(self) -> str:
         return os.path.join(self.data_directory, "viewer_text.txt")
 
     def __download_text_data__(self):
