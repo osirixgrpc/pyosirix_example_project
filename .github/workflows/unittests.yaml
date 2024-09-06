@@ -27,7 +27,7 @@ jobs:
 
       # Build gRPC libraries
       - name: Build gRPC Files Workflow
-        uses: .github/workflows/build_grpc_files.yaml  # Calls the reusable workflow
+        uses: ./.github/workflows/build_grpc_files.yaml  # Calls the reusable workflow
 
       # Install all our dependencies.
       - name: Install dependencies
