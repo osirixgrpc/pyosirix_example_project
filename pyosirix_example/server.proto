@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pyosirix_server;
+
+service Service {
+  // Define an RPC method that receives an array of numbers and returns another array
+  rpc ProcessImage(Image) returns (Image);
+}
+
+// Define the message for the array of numbers
+message Image {
+  int32 rows = 1;
+  int32 columns = 2;
+  repeated float image = 3;  // 'repeated' keyword indicates an array
+}

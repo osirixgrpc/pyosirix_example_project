@@ -1,32 +1,40 @@
 import os
 
-import dvc
+import dvc.api
 
-import pyosirix_example
+from pyosirix_example import __gh_hash__, __gh_repo__
 
 
 class DataLoader:
     def __init__(self):
         self.data_directory = os.path.join(__file__, "data")
         os.makedirs(self.data_directory, exist_ok=True)
-        self.repo_path = "https://github.com/osirixgrpc/pyosirix_example_project"
+
+    @staticmethod
+    def __dvc_data_path__() -> str:
+        """ The location of the data file in the main repository (where the dvc file is located).
+        """
+        return "data/viewer_text.txt"
 
     @property
     def data_path(self) -> str:
+        """ Where the data is located within the package.
+        """
         return os.path.join(self.data_directory, "viewer_text.txt")
 
-    def __download_text_data__(self):
-        """ Load the text data from DVC repository
+    def __download_data__(self):
+        """ Load the data from the DVC repository
         """
-        with dvc.api.open(self.text_file_path, repo=self.repo_path) as f:
-            with open(model_path, 'wb') as model_file:
-                model_file.write(f.read())
-        print(f"Model '{model_path}' successfully pulled from DVC.")
-    def text_data(self) -> str:
-        """ Get the content of the text data file.
+        with dvc.api.open(self.__dvc_data_path__(), repo=__gh_repo__, rev=__gh_hash__) as f:
+            with open(self.data_path, 'wb') as d:
+                d.write(f.read())
 
-        Returns:
-            str: Content of the text data file.
+    @property
+    def data(self) -> str:
+        """ The content of the data file.
         """
-        if not os.path.exists(text_data_file):
+        if not os.path.exists(self.data_path):
+            self.__download_data__()
 
+        with open(self.data_path, 'r') as f:
+            return f.read()
