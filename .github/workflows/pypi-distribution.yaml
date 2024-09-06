@@ -20,7 +20,7 @@ jobs:
           python-version: 3
 
       - name: Build gRPC Files Workflow
-        uses: ./.github/workflows/build_grpc_files.yaml  # Calls the reusable workflow
+        uses: .github/workflows/build_grpc_files.yaml  # Calls the reusable workflow
 
       - name: Install dependencies
         run: |
