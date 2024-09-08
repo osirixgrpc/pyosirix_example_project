@@ -4,7 +4,7 @@ runs:
   using: "composite" # Important - don't change
   steps:
     - name: Install gRPC tools
-      run: pip install grpcio grpcio-tools
+      run: pip install grpcio==1.66 grpcio-tools==1.66
       shell: bash
 
     - name: Compile Protobuf files

@@ -2,3 +2,4 @@ numpy
 Pillow
 dvc
 pyosirix
+grpc==1.66  #Make sure this matches what is in .github/actions/build_grpc_files!
