@@ -1,0 +1,13 @@
+name: "Build gRPC files"
+description: "Build the gRPC files"
+runs:
+  using: "composite" # Important - don't change
+  steps:
+    - name: Install gRPC tools
+      run: pip install grpcio grpcio-tools
+      shell: bash
+
+    - name: Compile Protobuf files
+      run: |
+        python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. pyosirix_example/grpc_protocols/server.proto
+      shell: bash
