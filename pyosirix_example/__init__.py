@@ -1,4 +1,4 @@
-__version__ = "0.0.1-dev.24"
+__version__ = "0.0.1-dev.25"
 __author__ = "Matthew D Blackledge"
 __maintainer__ = "Matthew D Blackledge"
 __license__ = "MIT"
