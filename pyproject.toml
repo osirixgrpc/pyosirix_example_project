@@ -32,6 +32,7 @@ classifiers = [
 packages = ["pyosirix_example",
             "pyosirix_example.client",
             "pyosirix_example.server",
+            "pyosirix_example.grpc_protocols",
             "pyosirix_example.utilities"]
 include-package-data = true
 
