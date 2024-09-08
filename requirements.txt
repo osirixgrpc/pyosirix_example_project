@@ -2,4 +2,5 @@ numpy
 Pillow
 dvc
 pyosirix
-grpcio==1.66  #Make sure this matches what is in .github/actions/build_grpc_files!
+grpcio>=1.66  #Make sure this matches what is in .github/actions/build_grpc_files!
+protobuf>=5.28
