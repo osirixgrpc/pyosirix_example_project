@@ -28,15 +28,19 @@ classifiers = [
     "Operating System :: MacOS :: MacOS X",
 ]
 
+# These dependencies are unpinned (i.e. define a range to be more flexible as a library).
+[project.dependencies]
+dvc = ">=3.55.2"
+Pillow = ">=10.4.0"
+grpcio = ">=1.66.1"
+protobuf = ">=5.28.0"
+
 [tool.setuptools]
 packages = ["pyosirix_example",
             "pyosirix_example.client",
             "pyosirix_example.server",
             "pyosirix_example.utilities"]
 include-package-data = true
-
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
 
 # Include all necessary server data files in the package
 [tool.setuptools.package-data]
