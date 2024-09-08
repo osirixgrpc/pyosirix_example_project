@@ -1,6 +1,7 @@
-numpy
-Pillow
-dvc
-pyosirix
-grpcio>=1.66  #Make sure this matches what is in .github/actions/build_grpc_files!
-protobuf>=5.28
+# Created using `pipreqs . --force` from repository root.
+dvc==3.55.2
+Pillow==10.4.0
+grpcio==1.66.1
+protobuf==5.28.0
+pytest==8.3.2
+setuptools==73.0.1
