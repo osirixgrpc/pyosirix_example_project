@@ -1,0 +1,1110 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../pytest/">
+      
+      
+        <link rel="next" href="../CONTRIBUTING/">
+      
+      
+      <link rel="icon" href="../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Version Control with bump2version - pyOsiriX Example Project (ver 0.0.1-dev.24)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#version-control-with-bump2version" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pyOsiriX Example Project (ver 0.0.1-dev.24)" class="md-header__button md-logo" aria-label="pyOsiriX Example Project (ver 0.0.1-dev.24)" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pyOsiriX Example Project (ver 0.0.1-dev.24)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Version Control with bump2version
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/osirixgrpc/pyosirix_example_project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pyOsiriX Example Project (ver 0.0.1-dev.24)" class="md-nav__button md-logo" aria-label="pyOsiriX Example Project (ver 0.0.1-dev.24)" data-md-component="logo">
+      
+  <img src="../assets/logo.png" alt="logo">
+
+    </a>
+    pyOsiriX Example Project (ver 0.0.1-dev.24)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/osirixgrpc/pyosirix_example_project" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugin_instructions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugin Instructions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Project Components
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Project Components
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD with GitHub
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dvc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data control with DVC
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation with MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pyosirix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing pyOsiriX scripts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python packaging with PIP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pytest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Unit testing with PyTest
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Version Control with bump2version
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Version Control with bump2version
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic versioning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-versioning-with-bump2version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic versioning with bump2version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-bump2version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing bump2version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bumpversioncfg-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The .bumpversion.cfg file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The .bumpversion.cfg file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bumpversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      [bumpversion]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bumpversionpartrelease" class="md-nav__link">
+    <span class="md-ellipsis">
+      [bumpversion:part:release]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bumpversionfilefile_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      [bumpversion:file:&lt;file_path&gt;]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-bump2version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running bump2version
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CODE_OF_CONDUCT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Code of Conduct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic versioning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#semantic-versioning-with-bump2version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semantic versioning with bump2version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-bump2version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing bump2version
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bumpversioncfg-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      The .bumpversion.cfg file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The .bumpversion.cfg file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bumpversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      [bumpversion]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bumpversionpartrelease" class="md-nav__link">
+    <span class="md-ellipsis">
+      [bumpversion:part:release]
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bumpversionfilefile_path" class="md-nav__link">
+    <span class="md-ellipsis">
+      [bumpversion:file:&lt;file_path&gt;]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-bump2version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running bump2version
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="version-control-with-bump2version">Version Control with <code>bump2version</code></h1>
+<h2 id="semantic-versioning">Semantic versioning</h2>
+<p>It is essential that you signal to your users which version of your code they are using. This helps them to keep track 
+of which version is compatible with whatever they plan to do in their own solutions, and helps you to communicate how 
+drastic the changes are that you are making from one version to the next. It also helps you keep up to date with the 
+changes you are making.</p>
+<p>This is now done almost universally through <a href="https://semver.org/"><em>semantic versioning</em></a>. It is a very clear and concise
+standard, that is easy to interpret and include within your own software. In the below, we will unashamedly "borrow" the
+definitions by the <a href="https://semver.org/">semver organization</a> as it provides the clearest explanation of the core 
+concepts.</p>
+<div class="language-text highlight"><span class="filename">Structure of semantic versioning</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>MAJOR.MINOR.PATCH
+</span></code></pre></div>
+<p>Increment:</p>
+<ul>
+<li><code>MAJOR</code> version when you make incompatible API changes</li>
+<li><code>MINOR</code> version when you add functionality in a backward compatible manner</li>
+<li><code>PATCH</code> version when you make backward compatible bug fixes</li>
+</ul>
+<p>There are a few rules that must be adhered to when updating your version:</p>
+<ul>
+<li>All elements of the version number must be integers, without leading zeros.</li>
+<li>During an update, elements can only <em>increase</em> numerically. For instance: <code>1.9.0 -&gt; 1.10.0 -&gt; 1.11.0</code>.</li>
+<li>Once a versioned package has been released, the contents of that version <strong>must not</strong> be modified. Any modifications 
+   <strong>must</strong> be released as a new version.</li>
+<li><code>PATCH</code>:<ul>
+<li><strong>Must</strong> be incremented if only backward compatible bug fixes are introduced (an internal change that fixes 
+incorrect behavior). </li>
+</ul>
+</li>
+<li><code>MINOR</code>:<ul>
+<li><strong>Must</strong> be incremented if new, backward compatible functionality is introduced to the public API.</li>
+<li><strong>Must</strong> be incremented if any public API functionality is marked as deprecated. </li>
+<li><strong>May</strong> include patch level changes. </li>
+<li><strong>Must</strong> be reset <code>PATCH</code> to 0 when minor version is incremented. </li>
+</ul>
+</li>
+<li><code>MAJOR</code>: <ul>
+<li><strong>Must</strong> be incremented if any backward incompatible changes are introduced to the public API. </li>
+<li><strong>May</strong> include <code>MINOR</code> and <code>PATCH</code> level changes. </li>
+<li><strong>Must</strong> reset <code>PATCH</code> and <code>MINOR</code> versions to 0 when major version is incremented.</li>
+</ul>
+</li>
+<li><code>MAJOR = 0</code> indicates initial development and anything <strong>may</strong> change at any time. The public API should not
+   be considered stable.</li>
+<li>A <em>pre-release</em> version <strong>may</strong> be denoted by appending a hyphen (<code>-</code>) and a series of dot separated identifiers 
+   immediately following the patch version (e.g. <code>1.1.3-dev.0</code> is a pre-release for stable version <code>1.1.3</code>). A 
+   pre-release version indicates that the version is unstable. Pre-release identifiers <strong>must</strong> follow these rules:<ul>
+<li><strong>Must</strong> comprise only ASCII alphanumerics and hyphens (<code>0-9A-Za-z-</code>). </li>
+<li><strong>Must not</strong> be empty. </li>
+<li><strong>Must_not</strong> include leading zeroes.</li>
+</ul>
+</li>
+</ul>
+<div class="language-text highlight"><span class="filename">Example of semantic version ordering</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>0.0.1-dev.0  (first development phase for version 0.0.1)
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>0.0.1-dev.1  (second development phase for version 0.0.1)
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>0.0.1-rc.0   (first release candidate for version 0.0.1)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>0.0.1        (unstable release of version 0.0.1)
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>0.0.2-dev.0  (first development phase for version 0.0.2)
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>0.0.2-rc.0   (first release candidate for version 0.0.2)
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>0.0.2        (unstable release of version 0.0.2)
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>1.0.0        (stable release of version 1.0.0)
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>1.1.0        (stable release of version 1.1.0)
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>1.1.1        (stable release of version 1.1.1)
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The rules for pre-release are designed to be quite flexible. This is perhaps where you will do most of your
+development work so it is worth making sure that whatever sytax you use, it makes some sense upfront. Also, it will
+be helpful to your users to indicate somewhere in your documentation what your coventions are for the pre-release
+phase to indicate where you are in the development cycle.  For example, in the OsiriXgrpc project this is:</p>
+<ul>
+<li><code>0.0.1-dev.0</code>: Unstable release in the development phase of the <code>dev</code> branch, first code push.</li>
+<li><code>0.0.1-dev.1</code>: Unstable release in the development phase of the <code>dev</code> branch, second code push.</li>
+<li><code>0.0.1-rc.0</code>: Unstable release in the release-candidate phase of the <code>dev</code> branch, first code push.</li>
+<li><code>0.0.1</code>: Unstable release in the <code>main</code> branch.</li>
+<li><code>1.0.0</code>: Stable release in the <code>main</code> branch.</li>
+</ul>
+<p>This tells users that if we are in a release-candidate phase, we will not accept any new feature requets until the 
+next development cycle begins.</p>
+</div>
+<h2 id="semantic-versioning-with-bump2version">Semantic versioning with <code>bump2version</code></h2>
+<p>As your project expands, there will likely be many files that contain a reference to the software version. In this 
+project, for example, there is a <code>VERSION</code> file to make it very easy to find, but the version is also contained in the
+<code>mkdocs.yaml</code> file so that all released documentation clearly shows the software version. In fact, there are
+nine files that contain a reference to the version throughout the project.</p>
+<p>We would not want to manually update these files every time we push or release code to GitHub. Worse yet, this would 
+likely lead to errors. This is where <a href="https://pypi.org/project/bump2version/"><code>bump2version</code></a> application comes in. 
+By including a simple <code>.bumpverision.cfg</code> configuration file at the root of your code repository, you can tell 
+<code>bump2version</code> which files contain a version string <em>and</em> define the version update rules. It can then 'bump' the 
+version of your entire project with single command.</p>
+<h2 id="installing-bump2version">Installing <code>bump2version</code></h2>
+<p>Installing <code>bump2version</code> of your system is easy:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>bump2version
+</span></code></pre></div>
+<h2 id="the-bumpversioncfg-file">The <code>.bumpversion.cfg</code> file</h2>
+<p>Let's take a look at the <code>.bumpversion.cfg</code> file contained within this project.</p>
+<div class="language-cfg highlight"><span class="filename">.bumpversion.cfg</span><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">[bumpversion]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="na">current_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.1-dev.24</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="na">commit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="na">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Bump version: {current_version} → {new_version}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="na">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">False</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="na">parse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">(?P&lt;major&gt;\d+)\.(?P&lt;minor&gt;\d+)\.(?P&lt;patch&gt;\d+)(\-(?P&lt;release&gt;[a-z]+).(?P&lt;build&gt;\d+))?</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="na">serialize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="na">{major}.{minor}.{patch}-{release}.{build}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="na">{major}.{minor}.{patch}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">[bumpversion:part:release]</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="na">first_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dev</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="na">optional_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">void</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="na">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="na">dev</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="na">rc</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="na">beta</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="na">void</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="k">[bumpversion:file:VERSION]</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">[bumpversion:file:pyproject.toml]</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{current_version}</span>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">{new_version}</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="k">[bumpversion:file:mkdocs.yaml]</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ver {current_version}</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ver {new_version}</span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="k">[bumpversion:file:docs/bumpversion.md]</span>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">current_version = {current_version}</span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">current_version = {new_version}</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="k">[bumpversion:file:pyosirix_example/__init__.py]</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">__version__ = &quot;{current_version}&quot;</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">__version__ = &quot;{new_version}&quot;</span>
+</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="k">[bumpversion:file:.github/ISSUE_TEMPLATE/bug.yaml]</span>
+</span><span id="__span-3-39"><a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{current_version}&quot;</span>
+</span><span id="__span-3-40"><a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{new_version}&quot;</span>
+</span><span id="__span-3-41"><a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>
+</span><span id="__span-3-42"><a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="k">[bumpversion:file:.github/ISSUE_TEMPLATE/documentation.yaml]</span>
+</span><span id="__span-3-43"><a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{current_version}&quot;</span>
+</span><span id="__span-3-44"><a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{new_version}&quot;</span>
+</span><span id="__span-3-45"><a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>
+</span><span id="__span-3-46"><a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="k">[bumpversion:file:.github/ISSUE_TEMPLATE/feature_request.yaml]</span>
+</span><span id="__span-3-47"><a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{current_version}&quot;</span>
+</span><span id="__span-3-48"><a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{new_version}&quot;</span>
+</span><span id="__span-3-49"><a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>
+</span><span id="__span-3-50"><a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="k">[bumpversion:file:.github/ISSUE_TEMPLATE/generic.yaml]</span>
+</span><span id="__span-3-51"><a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="na">search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{current_version}&quot;</span>
+</span><span id="__span-3-52"><a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="na">replace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">placeholder: &quot;{new_version}&quot;</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>{current_version}</code> and <code>{new_version}</code> are placeholders that will be filled in with the previous and new 
+version strings.</p>
+</div>
+<h3 id="bumpversion"><code>[bumpversion]</code></h3>
+<p>This section defines the main settings for the version bumping process.</p>
+<ul>
+<li><code>current_version = 0.0.1-dev.24</code>: Specifies the current version of the project representing 
+   <code>MAJOR.MINOR.PATCH-RELEASE.BUILD</code>. </li>
+<li><code>commit = True</code>: Indicates that <code>bump2version</code> will automatically commit to the local git repository after a
+    successful run.</li>
+<li><code>message = Bump version: {current_version} → {new_version}</code>: The message used after a successful git commit.</li>
+<li><code>tag = False</code>: Tell <code>bump2version</code> not to <a href="https://git-scm.com/book/en/v2/Git-Basics-Tagging">tag</a> the repository 
+    after a successful bump. </li>
+<li><code>parse = (?P&lt;major&gt;\d+)\.(?P&lt;minor&gt;\d+)\.(?P&lt;patch&gt;\d+)(\-(?P&lt;release&gt;[a-z]+).(?P&lt;build&gt;\d+))?</code>: This line defines a 
+    <a href="https://docs.python.org/3/howto/regex.html">regular expression</a> that bumpversion uses to parse the current version 
+    string into different parts: major, minor, patch, release, and build. It is where you define the rules of your 
+    versioning system. It is highly flexible, though of course here we have aligned with the 
+    <a href="#semantic-versioning">semver conventions</a>. This way is pretty standard, and you can leave it as it is if you like.</li>
+<li><code>serialize</code>: Defines how the version string should be formatted when it is updated. In this case it can either be
+   <code>MAJOR.MINOR.PATCH</code> or <code>MAJOR.MINOR.PATCH-RELEASE.BUILD</code> and nothing in between (for example <code>1.0.0-rc</code> would not
+    be possible, and would not make sense as it must have a build number too).</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>\d+</code> statement oin the <code>parse</code> regular expression indicates that that component of the version string must be a 
+positive integer, which bumpversion handles by default for you. The <code>[a-z]+</code> indicates that this component must
+consist of a sequence of lowercase letters. <code>bump2version</code> does not handle this for you and you need to define the
+behaviour in the <code>[bumpversion:part:release]</code> of the configuration file.</p>
+</div>
+<h3 id="bumpversionpartrelease"><code>[bumpversion:part:release]</code></h3>
+<p>This section controls how the release part of the version is managed.</p>
+<ul>
+<li><code>first_value = dev</code>: Sets the default value of the release part to dev when first incremented.</li>
+<li><code>optional_value = void</code>: Specifies an optional value (void) that represents a missing or absent release type.</li>
+<li><code>values</code> Defines the allowed values for the release part of the version <strong>in order</strong>:<ul>
+<li><code>dev</code>: Development release - still in the early stage of development (<code>dev</code> branch).</li>
+<li><code>rc</code>: Release candidate release - internally testing a potentially stable release. No new features (<code>dev</code> branch). </li>
+<li><code>beta</code>: Beta release - external testing a potentially stable release (<code>main</code> branch).</li>
+<li><code>void</code>: No release type - this tells <code>bump2version</code> to move to a stable release (remove <code>-RELEASE.BUILD</code>).</li>
+</ul>
+</li>
+</ul>
+<h3 id="bumpversionfilefile_path"><code>[bumpversion:file:&lt;file_path&gt;]</code></h3>
+<p>These sections specify the files where the version number should be updated. <code>bump2version</code> will search for the current 
+version, defined by the <code>{current_version}</code> placeholder, and replace it with the new version, defined by the 
+<code>{new_version}</code> placeholder.</p>
+<ul>
+<li><code>search</code>: Look for instances that match this string in the file.</li>
+<li><code>replace</code>: Replace the string with this one.</li>
+</ul>
+<h2 id="running-bump2version">Running <code>bump2version</code></h2>
+<p>Running bumpversion is as simple as follows:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bumpversion<span class="w"> </span>&lt;part&gt;
+</span></code></pre></div>
+<p>where <code>&lt;part&gt;</code> indicates which part of the version you are trying to update. For example, say our starting version is
+<code>1.1.1-dev.1</code>, below is a history of what happens depending on the bumpversion command you use:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>New version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bumpversion build</code></td>
+<td><code>1.1.1-dev.2</code></td>
+</tr>
+<tr>
+<td><code>bumpversion build</code></td>
+<td><code>1.1.1-dev.3</code></td>
+</tr>
+<tr>
+<td><code>bumpversion release</code></td>
+<td><code>1.1.1-rc.0</code></td>
+</tr>
+<tr>
+<td><code>bumpversion build</code></td>
+<td><code>1.1.1-rc.1</code></td>
+</tr>
+<tr>
+<td><code>bumpversion release</code></td>
+<td><code>1.1.1-beta.0</code></td>
+</tr>
+<tr>
+<td><code>bumpversion release</code></td>
+<td><code>1.1.1</code></td>
+</tr>
+<tr>
+<td><code>bumpversion minor</code></td>
+<td><code>1.2.0-dev.0</code></td>
+</tr>
+<tr>
+<td><code>bumpversion major</code></td>
+<td><code>2.0.0-dev.0</code></td>
+</tr>
+<tr>
+<td><code>bumpversion patch</code></td>
+<td><code>2.0.1-dev.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>The name of <code>&lt;part&gt;</code> is completely dependent on the name you define for each part in the <a href="#bumpversion"><code>parse</code></a> field 
+of the config file. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You must commit all your code changes <em>before</em> running <code>bump2ersion</code> - it will fail and complain otherwise.  </p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Matthew D Blackledge
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.select", "content.code.annotate"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
