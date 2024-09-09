@@ -9,5 +9,5 @@ runs:
 
     - name: Compile Protobuf files
       run: |
-        python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. pyosirix_example/grpc_protocols/server.proto
+        python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. pyosirix_example/grpc_protocols/service.proto
       shell: bash
