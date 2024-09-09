@@ -2,8 +2,8 @@ from concurrent import futures
 
 import grpc
 
-from data_loader import DataLoader
-from service import PyosirixExampleService
+from pyosirix_example.server.data_loader import DataLoader
+from pyosirix_example.server.service import PyosirixExampleService
 from pyosirix_example.grpc_protocols import service_pb2_grpc
 
 

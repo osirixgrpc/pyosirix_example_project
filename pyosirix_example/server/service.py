@@ -1,7 +1,7 @@
 """ Implements the service defined in the service.proto file. """
 import numpy as np
 
-from data_loader import DataLoader
+from pyosirix_example.server.data_loader import DataLoader
 from pyosirix_example.grpc_protocols import service_pb2, service_pb2_grpc
 from pyosirix_example.utilities.text_2_image import Text2Image
 
