@@ -29,11 +29,13 @@ classifiers = [
 ]
 
 # These dependencies are unpinned (i.e. define a range to be more flexible as a library).
-[project.dependencies]
-dvc = ">=3.55.2"
-Pillow = ">=10.4.0"
-grpcio = ">=1.66.1"
-protobuf = ">=5.28.0"
+dependencies = [
+    "dvc>=3.55.2",
+    "Pillow>=10.4.0",
+    "grpcio>=1.66.1",
+    "protobuf>=5.28.0",
+    "pyosirix>=0.2.1",
+]
 
 [tool.setuptools]
 packages = ["pyosirix_example",
