@@ -1,56 +1,51 @@
 from concurrent import futures
 
 import grpc
-import numpy as np
 
 from data_loader import DataLoader
-from pyosirix_example.grpc_protocols import server_pb2_grpc
-from pyosirix_example.grpc_protocols import server_pb2
-from pyosirix_example.utilities.text_2_image import Text2Image
+from service import PyosirixExampleService
+from pyosirix_example.grpc_protocols import service_pb2_grpc
 
-class Service(server_pb2_grpc.ServiceServicer):
-    def __init__(self):
+
+class Server:
+    """ Burn text to images on an OsiriX viewer controller.
+
+        Attributes:
+            domain (str): The domain of the server. Default is "127.0.0.1" (localhost).
+            port (int): The port number with which to establish the connection. Default is 50051.
+            max_send_message_length (int): The maximum number of bytes permitted in a send message.
+                Default is 500000000 (500 MB).
+            max_receive_message_length (int): The maximum number of bytes permitted in a receive
+                message. Default is 500000000 (500 MB).
+        """
+
+    def __init__(self, domain: str = "127.0.0.1", port: int = 50051,
+                 max_send_message_length: int = 512 * 1024 * 1024,
+                 max_receive_message_length: int = 512 * 1024 * 1024):
+        self.port = port
+        self.domain = domain
+        self.server_url = domain + ":" + str(self.port)
+        self.max_send_message_length = max_send_message_length
+        self.max_receive_message_length = max_receive_message_length
         self.data_loader = DataLoader()
+        self.server = None
 
-    def process(self, request):
-        # Log the received image details
-        print(
-            f"Received Image: {request.rows}x{request.columns} with data size {len(request.image)}")
-
-        # Convert to numpy array
-        array = np.array(request.image).reshape(request.rows, request.columns)
-
-        # Get the data to add
-        text = self.data_loader.data
-
-        # Process the image
-        t2i = Text2Image()
-        new_array = t2i.paste_text_in_array(text,
-                                            array,
-                                            location=3,  # Top left
-                                            scale=0.75,
-                                            offset=0.05,
-                                            remove_background=False,
-                                            align="left",
-                                            font_path="GillSans.ttc",
-                                            value=4095,
-                                            bg_value=0)
-
-        # Create a list
-        flat_list = new_array.ravel().tolist()
-
-        # Return the processed image
-        return server_pb2.Image(rows=request.rows, columns=request.columns, image=flat_list)
-
-
-def serve(ip_address: str = "127.0.0.1", port: int = 50051):
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    server_pb2_grpc.add_ServiceServicer_to_server(Service(), server)
-    server.add_insecure_port(f'{ip_address}:{port}')
-    server.start()
-    print(f"Server is running on port {port}...")
-    server.wait_for_termination()
+    def start_server(self):
+        """ Start the server.
+        """
+        self.server = grpc.server(futures.ThreadPoolExecutor(max_workers=10),
+                                  options=[("grpc.max_receive_message_length",
+                                            self.max_receive_message_length),
+                                           ("grpc.max_send_message_length",
+                                            self.max_send_message_length)]
+                                  )
+        service_pb2_grpc.add_PyosirixExampleServiceServicer_to_server(PyosirixExampleService(),
+                                                                      self.server)
+        self.server.add_insecure_port(f'{self.domain}:{self.port}')
+        self.server.start()
+        print(f"Server is running on {self.domain}:{self.port}...")
+        self.server.wait_for_termination()
 
 
 if __name__ == "__main__":
-    serve()
+    Server().start_server()
