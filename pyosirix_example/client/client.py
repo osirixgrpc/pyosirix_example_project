@@ -29,6 +29,7 @@ class Client:
         self.max_receive_message_length = max_receive_message_length
         self.service_stub = None
         self.channel = None
+        self.start_connection()
 
     def start_connection(self):
         """ Start the insecure client service.

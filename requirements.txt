@@ -1,5 +1,5 @@
-# Created using `pipreqs . --force` from repository root.
 dvc==3.55.2
+dvc-gs>=3.0.1
 Pillow==10.4.0
 grpcio==1.66.1
 protobuf==5.28.0

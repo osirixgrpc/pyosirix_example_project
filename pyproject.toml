@@ -30,11 +30,12 @@ classifiers = [
 
 # These dependencies are unpinned (i.e. define a range to be more flexible as a library).
 dependencies = [
-    "dvc>=3.55.2",
-    "Pillow>=10.4.0",
-    "grpcio>=1.66.1",
-    "protobuf>=5.28.0",
-    "pyosirix>=0.2.1b5",
+    "dvc>=3.55.2",       # General DVC library. Used for keeping track of all public datasets or models.
+    "dvc-gs>=3.0.1",     # DVC Google cloud storage library. This may need to change depending on your storage solution.
+    "Pillow>=10.4.0",    # Used for image processing.
+    "grpcio>=1.66.1",    # Used to establish gRPC connections.
+    "protobuf>=5.28.0",  # Used to understand the protocol buffer format (.proto files).
+    "pyosirix>=0.2.1b5", # Used to interact with OsiriX.
 ]
 
 [tool.setuptools]
