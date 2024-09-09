@@ -11,8 +11,6 @@ class PyosirixExampleService(service_pb2_grpc.PyosirixExampleServiceServicer):
         self.data_loader = DataLoader()
 
     def ProcessImage(self, request, context):
-        print(
-            f"Received Image: {request.rows}x{request.columns} with data size {len(request.image)}")
 
         # Convert to numpy array
         array = np.array(request.image).reshape(request.rows, request.columns)
