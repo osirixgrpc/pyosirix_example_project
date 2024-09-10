@@ -35,7 +35,7 @@ dependencies = [
     "Pillow>=10.4.0",    # Used for image processing.
     "grpcio>=1.66.1",    # Used to establish gRPC connections.
     "protobuf>=5.28.0",  # Used to understand the protocol buffer format (.proto files).
-    "pyosirix>=0.2.1b5", # Used to interact with OsiriX.
+    "pyosirix==0.2.1b5", # Used to interact with OsiriX.
 ]
 
 [tool.setuptools]

@@ -23,9 +23,9 @@ class PyosirixExampleService(service_pb2_grpc.PyosirixExampleServiceServicer):
         new_array = t2i.paste_text_in_array(text,
                                             array,
                                             location=3,  # Top left
-                                            scale=0.75,
+                                            scale=0.35,
                                             offset=0.05,
-                                            remove_background=False,
+                                            remove_background=True,
                                             align="left",
                                             font_path="GillSans.ttc",
                                             value=4095,

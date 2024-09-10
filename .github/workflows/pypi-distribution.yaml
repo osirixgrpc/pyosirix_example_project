@@ -29,7 +29,6 @@ jobs:
 
       - name: Add repository details to __init__.py
         run: |
-          sed -i "s|REPO_PLACEHOLDER|${GITHUB_REPOSITORY}|" pyosirix_example/__init__.py
           sed -i "s|HASH_PLACEHOLDER|$(git rev-parse HEAD)|" pyosirix_example/__init__.py
         shell: bash
 

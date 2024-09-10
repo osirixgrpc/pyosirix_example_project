@@ -2,7 +2,7 @@ import os
 
 import dvc.api
 
-from pyosirix_example import __gh_hash__, __gh_repo__
+from pyosirix_example import get_git_hash, __url__
 
 
 class DataLoader:
@@ -25,12 +25,9 @@ class DataLoader:
     def __download_data__(self):
         """ Load the data from the DVC repository
         """
-        try:
-            with dvc.api.open(self.__dvc_data_path__(), repo=__gh_repo__, rev=__gh_hash__) as f:
-                with open(self.data_path, 'wb') as d:
-                    d.write(f.read())
-        except Exception as e:
-            print(f"Error opening data: {e}")
+        with dvc.api.open(self.__dvc_data_path__(), repo=__url__, rev=get_git_hash()) as f:
+            with open(self.data_path, 'w') as d:
+                d.write(f.read())
 
     @property
     def data(self) -> str:
