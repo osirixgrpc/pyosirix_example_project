@@ -27,7 +27,7 @@ class PyosirixExampleService(service_pb2_grpc.PyosirixExampleServiceServicer):
                                             offset=0.05,
                                             remove_background=True,
                                             align="left",
-                                            font_path="GillSans.ttc",
+                                            font_path="FreeMono.ttf",
                                             value=4095,
                                             bg_value=0)
 

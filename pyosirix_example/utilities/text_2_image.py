@@ -242,8 +242,8 @@ class Text2Image:
 
         Args:
             text (str): The text to be converted.
-            font_path (str, optional): A path to a font file. Defaults to None in which case Arial
-                is used.
+            font_path (str, optional): A path to a font file. Defaults to None in which case
+                FreeMono is used.
             font_size (int, optional): A font size. Defaults to 40.
             value (float, optional): A value to use for the text if `mode` is greyscale.
                 Defaults to 1.0.
@@ -282,7 +282,7 @@ class Text2Image:
         if font_path:
             font = ImageFont.truetype(font_path, font_size)
         else:
-            font = ImageFont.truetype("Arial.ttf", font_size)
+            font = ImageFont.truetype("FreeMono.ttf", font_size)
 
         # Add text to the image and trim
         if mode == "F":
