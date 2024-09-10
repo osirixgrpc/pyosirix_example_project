@@ -1,3 +1,5 @@
+import os
+
 import osirix
 from osirix.dcm_pix import DCMPix
 from osirix.viewer_controller import ViewerController
@@ -31,6 +33,50 @@ class Client:
         self.channel = None
         self.start_connection()
 
+    def client_certificates_path(self) -> str:
+        """ Returns the expected certificates path of this client.
+
+        Returns:
+            str: The path to the certificate's directory.
+        """
+        return os.path.join(os.path.expanduser("~"), "certs", "pyosirix", "client", self.domain)
+
+    def ca_certificate(self) -> bytes:
+        """ Return the ca certificate for the machine running this script.
+        """
+        cert_path = os.path.join(self.client_certificates_path(), "ca.crt")
+        if not os.path.exists(cert_path):
+            raise FileNotFoundError("No ca certificate found for this client. "
+                                    "Please run `client_server_certs.sh`")
+
+        with open(cert_path, "rb") as cert_file:
+            cert = cert_file.read()
+        return cert
+
+    def client_certificate(self) -> bytes:
+        """ Return the client certificate for the machine running this script.
+        """
+        cert_path = os.path.join(self.client_certificates_path(), "client.crt")
+        if not os.path.exists(cert_path):
+            raise FileNotFoundError("No client certificate found for this client. "
+                                    "Please run `client_server_certs.sh`")
+
+        with open(cert_path, "rb") as cert_file:
+            cert = cert_file.read()
+        return cert
+
+    def client_key(self) -> bytes:
+        """ Return the client key for the machine running this script.
+        """
+        key_path = os.path.join(self.client_certificates_path(), "client.key")
+        if not os.path.exists(key_path):
+            raise FileNotFoundError("No client key found for this client. "
+                                    "Please run `client_server_certs.sh`")
+
+        with open(key_path, "rb") as cert_file:
+            key = cert_file.read()
+        return key
+
     def start_connection(self):
         """ Start the insecure client service.
 
@@ -38,11 +84,21 @@ class Client:
             GrpcException: Occurs when something goes wrong trying to set up the connection.
 
         """
-        self.channel = grpc.insecure_channel(self.server_url,
-                                             options=[("grpc.max_receive_message_length",
-                                                       self.max_receive_message_length),
-                                                      ("grpc.max_send_message_length",
-                                                       self.max_send_message_length)])
+        key = self.client_key()
+        cert = self.client_certificate()
+        ca_cert = self.ca_certificate()
+        credentials = grpc.ssl_channel_credentials(root_certificates=ca_cert,
+                                                   private_key=key,
+                                                   certificate_chain=cert)
+
+        # Create a secure gRPC channel
+        self.channel = grpc.secure_channel(self.server_url,
+                                           credentials,
+                                           options=[("grpc.max_receive_message_length",
+                                                    self.max_receive_message_length),
+                                                    ("grpc.max_send_message_length",
+                                                    self.max_send_message_length)])
+
         self.service_stub = service_pb2_grpc.PyosirixExampleServiceStub(self.channel)
 
     def stop_connection(self):
