@@ -282,7 +282,7 @@ class Text2Image:
         if font_path:
             font = ImageFont.truetype(font_path, font_size)
         else:
-            font = ImageFont.truetype("FreeMono.ttf", font_size)
+            font = ImageFont.truetype("Arial.ttf", font_size)
 
         # Add text to the image and trim
         if mode == "F":

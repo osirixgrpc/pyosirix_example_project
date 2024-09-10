@@ -74,8 +74,8 @@ class Client:
             raise FileNotFoundError("No client key found for this client. "
                                     "Please run `client_server_certs.sh`")
 
-        with open(key_path, "rb") as cert_file:
-            key = cert_file.read()
+        with open(key_path, "rb") as key_file:
+            key = key_file.read()
         return key
 
     def start_connection(self):

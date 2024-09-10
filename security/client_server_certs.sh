@@ -6,6 +6,24 @@ read -p "Enter the server username: " SERVER_USER
 read -s -p "Enter the server password (leave blank if running locally): " SERVER_PASS
 echo
 
+# The ssl configuration file for generating certificates.
+SSLCONFIG="[ req ]
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+prompt             = no
+
+[ req_distinguished_name ]
+CN = $SERVER_IP
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[ alt_names ]
+DNS.1 = localhost
+IP.1 = 127.0.0.1
+IP.2 = $SERVER_IP"
+
 # Variables
 PROJECT_NAME="pyosirix_script"
 SERVER_PATH="~/certs/$PROJECT_NAME/server"
@@ -37,9 +55,10 @@ sshpass -p "$SERVER_PASS" ssh $SERVER_USER@$SERVER_IP <<EOF
   cd $SERVER_PATH
   if [ ! -f "server.key" ] || [ ! -f "server.crt" ] || [ "$NEW_CA_GENERATED" == "true" ]; then
     echo "Server key or certificate not found or new CA was generated. Regenerating server key and certificate..."
+    echo "$SSLCONFIG" > openssl.cnf
     openssl genpkey -algorithm RSA -out server.key
-    openssl req -new -key server.key -out server.csr -subj "/CN=$SERVER_IP"
-    openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365
+    openssl req -new -key server.key -out server.csr -config openssl.cnf
+    openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365 -extfile openssl.cnf -extensions req_ext
     rm server.csr
   else
     echo "Server key and certificate already exist and are valid."
