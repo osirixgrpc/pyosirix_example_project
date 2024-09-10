@@ -39,7 +39,8 @@ class Client:
         Returns:
             str: The path to the certificate's directory.
         """
-        return os.path.join(os.path.expanduser("~"), "certs", "pyosirix", "client", self.domain)
+        return os.path.join(os.path.expanduser("~"),
+                            "certs", "pyosirix_script", "client", self.domain)
 
     def ca_certificate(self) -> bytes:
         """ Return the ca certificate for the machine running this script.

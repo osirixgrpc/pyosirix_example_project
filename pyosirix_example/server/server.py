@@ -38,7 +38,7 @@ class Server:
         Returns:
             str: The path to the certificate's directory.
         """
-        return os.path.join(os.path.expanduser("~"), "certs", "pyosirix", "server")
+        return os.path.join(os.path.expanduser("~"), "certs", "pyosirix_script", "server")
 
     def ca_certificate(self) -> bytes:
         """ Return the ca certificate for the machine running this script.
@@ -68,6 +68,7 @@ class Server:
         """ Return the server key for the machine running this script.
         """
         key_path = os.path.join(self.server_certificates_path(), "server.key")
+        print(key_path)
         if not os.path.exists(key_path):
             raise FileNotFoundError("No server key found for this server. "
                                     "Please run `client_server_certs.sh`")
