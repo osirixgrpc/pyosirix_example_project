@@ -6,8 +6,8 @@ read -p "Enter the server username: " SERVER_USER
 read -s -p "Enter the server password (leave blank if running locally): " SERVER_PASS
 echo
 
-# The ssl configuration file for generating certificates.
-SSLCONFIG="[ req ]
+# The ssl configuration file for generating server certificates.
+SERVER_SSL_CONFIG="[ req ]
 default_bits       = 2048
 distinguished_name = req_distinguished_name
 req_extensions     = req_ext
@@ -55,7 +55,7 @@ sshpass -p "$SERVER_PASS" ssh $SERVER_USER@$SERVER_IP <<EOF
   cd $SERVER_PATH
   if [ ! -f "server.key" ] || [ ! -f "server.crt" ] || [ "$NEW_CA_GENERATED" == "true" ]; then
     echo "Server key or certificate not found or new CA was generated. Regenerating server key and certificate..."
-    echo "$SSLCONFIG" > openssl.cnf
+    echo "SERVER_SSL_CONFIG" > openssl.cnf
     openssl genpkey -algorithm RSA -out server.key
     openssl req -new -key server.key -out server.csr -config openssl.cnf
     openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 365 -extfile openssl.cnf -extensions req_ext
